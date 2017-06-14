@@ -32,6 +32,8 @@ module.exports = config(function(instance, options, environment) {
     });
 
     if(environment.valueOf('production')) {
+        const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
         instance.merge({
             plugins: [
                 new webpack.optimize.CommonsChunkPlugin({
@@ -43,6 +45,18 @@ module.exports = config(function(instance, options, environment) {
 
                 new webpack.optimize.CommonsChunkPlugin({
                     name: '_manifest'
+                }),
+
+                new webpack.optimize.UglifyJsPlugin({
+                    sourceMap: options.enabled.sourceMap
+                }),
+
+                new OptimizeCssAssetsPlugin({
+                    cssProcessor: require('cssnano'),
+                    cssProcessorOptions: {
+                        discardComments: { removeAll: true }
+                    },
+                    canPrint: true
                 })
             ]
         });
