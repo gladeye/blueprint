@@ -8,7 +8,8 @@ module.exports = config(function(instance, options) {
         production: () => process.env.NODE_ENV === 'production',
         filename: (env) => {
             return env.valueOf('mode') === 'build'? options.hash : '[name]';
-        }
+        },
+        manifest: {}
     });
 
     return instance.extend('./build/webpack/[mode].config.js');

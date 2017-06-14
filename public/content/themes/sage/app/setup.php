@@ -12,8 +12,21 @@ use Roots\Sage\Template\BladeProvider;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
-    wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+    $manifest = sage('assets')->manifest;
+
+    foreach ($manifest as $key => $value) {
+        // ignore anything but scripts/ or styles/
+        if(strpos($key, 'scripts/') !== 0 &&
+            strpos($key, 'styles/') !== 0) continue;
+        // ignore map files
+        if(strpos($key, ".map") === strlen($key) - 4) continue;
+
+        if(strpos($key, 'scripts/') !== false) {
+            wp_enqueue_script($key, asset_path($key), [], null, true);
+        } else {
+            wp_enqueue_style($key, asset_path($key), false, null);
+        }
+    }
 }, 100);
 
 /**
@@ -118,8 +131,8 @@ add_action('after_setup_theme', function () {
 
         // die(var_dump($viewPaths));
     config([
-        'assets.manifest' => "{$paths['dir.stylesheet']}/../dist/assets.json",
-        'assets.uri'      => "{$paths['uri.stylesheet']}/dist",
+        'assets.manifest' => "{$paths['dir.stylesheet']}/assets/dist/assets.json",
+        'assets.uri'      => "{$paths['uri.stylesheet']}/resources/assets/dist",
         'view.compiled'   => "{$paths['dir.upload']}/cache/compiled",
         'view.namespaces' => ['App' => WP_CONTENT_DIR],
         'view.paths'      => $viewPaths,
