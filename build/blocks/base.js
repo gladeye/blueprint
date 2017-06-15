@@ -16,7 +16,11 @@ module.exports = config(function(instance, options, environemnt) {
         },
 
         resolve: {
-            extensions: [ '*', '.js' ]
+            extensions: [ '*', '.js' ],
+            modules: [
+                `${options.paths.context}/scripts`,
+                'node_modules'
+            ]
         }
     });
 });
