@@ -6,7 +6,7 @@ module.exports = config(function(instance, options, environment) {
             rules: [
                 {
                     test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
-                    include: options.context,
+                    include: options.paths.context,
                     loader: 'file-loader',
                     options: {
                         name: `[path]${environment.valueOf('filename')}.[ext]`

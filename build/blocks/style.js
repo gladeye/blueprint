@@ -7,7 +7,7 @@ module.exports = config(function(instance, options, environment) {
             rules: [
                 {
                     test: /\.scss$/,
-                    include: options.context,
+                    include: options.paths.context,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         publicPath: '../',

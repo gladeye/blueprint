@@ -10,7 +10,7 @@ module.exports = config(function(instance, options, environment) {
     instance.merge({
         plugins: [
             new CleanPlugin(['dist/**/*'], {
-                root: options.context,
+                root: options.paths.context,
                 verbose: false
             }),
 

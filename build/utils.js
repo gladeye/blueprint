@@ -1,10 +1,15 @@
 const { Config, environment } = require('webpack-config'),
     path = require('path'),
-    context = path.resolve(__dirname, '../public/content/themes/sage/resources/assets/'),
+    theme = path.resolve(__dirname, '../public/content/themes/sage'),
+    context = `${theme}/resources/assets`,
     options = require(`${context}/options.json`);
 
-// inject context
-options.context = context;
+// inject paths
+options.paths = {
+    context, theme
+};
+
+console.log(options);
 
 module.exports.config = function(fn) {
     const config = new Config();
@@ -14,3 +19,5 @@ module.exports.config = function(fn) {
 module.exports.select = function(cases) {
     return cases[environment.valueOf('env')];
 };
+
+module.exports.options = options;
