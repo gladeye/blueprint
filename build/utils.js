@@ -1,7 +1,10 @@
 const { Config, environment } = require('webpack-config'),
-    options = require(
-        '../public/content/themes/sage/resources/webpack.options.js'
-    );
+    path = require('path'),
+    context = path.resolve(__dirname, '../public/content/themes/sage/resources/assets/'),
+    options = require(`${context}/options.json`);
+
+// inject context
+options.context = context;
 
 module.exports.config = function(fn) {
     const config = new Config();

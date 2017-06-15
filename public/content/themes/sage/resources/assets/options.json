@@ -1,12 +1,11 @@
-module.exports = {
-    "context": `${__dirname}/assets`,
+{
     "entry": {
         "main": [
             "./scripts/main.js",
             "./styles/main.scss"
         ]
     },
-    "publicPath": "/content/themes/sage",
+    "publicPath": "/content/themes/sage/resources/assets/dist",
     "hash": "[name].[hash:8]",
     "watch": [
         "{app,resources/views}/**/*.php"
@@ -16,8 +15,8 @@ module.exports = {
         "android 4",
         "opera 12"
     ],
-    enabled: {
-        sourceMap: true
+    "enabled": {
+        "sourceMap": true
     },
-    copy: "+(images|media)/**/*"
-};
+    "copy": "+(images|media)/**/*"
+}
