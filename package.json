@@ -2,8 +2,19 @@
     "name": "@gladeye/blueprint",
     "license": "MIT",
     "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
+    "config": {
+        "port": {
+            "wordpress": 5000,
+            "webpack": 4000,
+            "browsersync": 3000
+        }
+    },
     "scripts": {
-        "build": "webpack"
+        "build": "webpack",
+        "start": "run-p -lns start:*",
+        "start:browsersync": "WPK_URL=http://localhost:$npm_package_config_port_webpack ./build/bin/browsersync.js --port $npm_package_config_port_browsersync",
+        "start:webpack": "WP_URL=http://localhost:$npm_package_config_port_wordpress webpack-dev-server --port $npm_package_config_port_webpack",
+        "start:wordpress": "wp server --port=$npm_package_config_port_wordpress"
     },
     "engines": {
         "node": ">= 7"
@@ -13,6 +24,7 @@
         "babel-loader": "^7.0.0",
         "babel-preset-env": "^1.5.2",
         "babel-preset-stage-0": "^6.24.1",
+        "browser-sync": "^2.18.12",
         "clean-webpack-plugin": "^0.1.16",
         "copy-globs-webpack-plugin": "^0.2.0",
         "css-loader": "^0.28.4",
@@ -20,14 +32,19 @@
         "extract-text-webpack-plugin": "^2.1.2",
         "file-loader": "^0.11.2",
         "node-sass": "^4.5.3",
+        "npm-run-all": "^4.0.2",
         "optimize-css-assets-webpack-plugin": "^2.0.0",
         "postcss-loader": "^2.0.5",
         "resolve-url-loader": "^2.0.2",
+        "resp-modifier": "^6.0.2",
         "sass-loader": "^6.0.5",
         "style-loader": "^0.18.2",
         "url-loader": "^0.5.9",
         "webpack": "^2.6.1",
         "webpack-assets-manifest": "^0.7.0",
         "webpack-config": "^7.0.0",
+        "webpack-dev-server": "^2.4.5",
+        "yargs": "^8.0.2"
+        "bootstrap": "^3.3.7"
     }
 }

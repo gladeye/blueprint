@@ -14,6 +14,8 @@ use Roots\Sage\Template\BladeProvider;
 add_action('wp_enqueue_scripts', function () {
     $manifest = sage('assets')->manifest;
 
+    if(!count($manifest)) $manifest['scripts/main.js'] = 'scripts/main.js';
+
     foreach ($manifest as $key => $value) {
         // ignore anything but scripts/ or styles/
         if(strpos($key, 'scripts/') !== 0 &&
