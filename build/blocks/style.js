@@ -6,6 +6,23 @@ module.exports = config(function(instance, options, environment) {
         module: {
             rules: [
                 {
+                    test: /\.css$/,
+                    include: /node_modules/,
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        publicPath: '../',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    sourceMap: options.enabled.sourceMap
+                                }
+                            }
+                        ]
+                    }),
+                },
+
+                {
                     test: /\.scss$/,
                     include: options.paths.context,
                     use: ExtractTextPlugin.extract({
