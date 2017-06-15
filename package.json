@@ -13,7 +13,7 @@
         "build": "webpack",
         "start": "run-p -lns start:*",
         "start:browsersync": "WPK_URL=http://localhost:$npm_package_config_port_webpack ./build/bin/browsersync.js --port $npm_package_config_port_browsersync",
-        "start:webpack": "WP_URL=http://localhost:$npm_package_config_port_wordpress webpack-dev-server --port $npm_package_config_port_webpack",
+        "start:webpack": "PHP_URL=http://localhost:$npm_package_config_port_wordpress webpack-dev-server --port $npm_package_config_port_webpack",
         "start:wordpress": "wp server --port=$npm_package_config_port_wordpress"
     },
     "engines": {

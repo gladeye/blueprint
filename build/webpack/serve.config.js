@@ -2,7 +2,7 @@ const { config } = require('../utils'),
     respMod = require('resp-modifier'),
     { argv } = require('yargs'),
     webpack = require('webpack'),
-    WP_URL = process.env.WP_URL;
+    PHP_URL = process.env.PHP_URL;
 
 module.exports = config(function(instance) {
     return instance
@@ -20,15 +20,16 @@ module.exports = config(function(instance) {
             inline: true,
             proxy: {
                 '/': {
-                    target: WP_URL,
-                    changeOrigin: true
+                    target: PHP_URL,
+                    changeOrigin: true,
+                    autoRewrite: true
                 }
             },
             setup(app) {
                 app.use(respMod({
                     rules: [
                         {
-                            match: new RegExp(WP_URL.replace('//', '\/\/'), 'gi'),
+                            match: new RegExp(PHP_URL.replace('//', '\/\/'), 'gi'),
                             replace: `http://localhost:${argv.port}`
                         }
                     ]
