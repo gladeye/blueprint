@@ -9,8 +9,6 @@ options.paths = {
     context, theme
 };
 
-console.log(options);
-
 module.exports.config = function(fn) {
     const config = new Config();
     return fn(config, options, environment);
