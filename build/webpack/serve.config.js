@@ -1,7 +1,8 @@
 const { config } = require('../utils'),
-    respMod = require('resp-modifier'),
     { argv } = require('yargs'),
+    respMod = require('resp-modifier'),
     webpack = require('webpack'),
+    FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin'),
     PHP_URL = process.env.PHP_URL;
 
 module.exports = config(function(instance) {
@@ -18,6 +19,8 @@ module.exports = config(function(instance) {
             compress: false,
             hot: true,
             inline: true,
+            quiet: true,
+            overlay: true,
             proxy: {
                 '/': {
                     target: PHP_URL,
@@ -37,7 +40,8 @@ module.exports = config(function(instance) {
             }
         },
         plugins: [
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin(),
+            new FriendlyErrorsWebpackPlugin()
         ]
     });
 });
