@@ -10,7 +10,7 @@
         }
     },
     "scripts": {
-        "setup": "yarn setup:composer && yarn setup:npm",
+        "setup": "yarn setup:npm",
         "setup:composer": "composer install",
         "setup:npm": "yarn install",
         "start": "run-p -lns start:*",
