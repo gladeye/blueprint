@@ -10,7 +10,9 @@
         }
     },
     "scripts": {
-        "build": "webpack",
+        "setup": "yarn setup:composer && yarn setup:npm",
+        "setup:composer": "composer install",
+        "setup:npm": "yarn install",
         "start": "run-p -lns start:*",
         "start:browsersync": "WPK_URL=http://localhost:$npm_package_config_port_webpack ./build/bin/browsersync.js --port $npm_package_config_port_browsersync",
         "start:webpack": "PHP_URL=http://localhost:$npm_package_config_port_wordpress webpack-dev-server --port $npm_package_config_port_webpack",
