@@ -27,6 +27,12 @@ module.exports = config(function(instance, options, environment) {
                 sortManifest: true,
                 assets: environment.valueOf('manifest'),
                 replacer: require('../../vendor/roots/sage/resources/assets/build/util/assetManifestsFormatter')
+            }),
+
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+                }
             })
         ]
     });
