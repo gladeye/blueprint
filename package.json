@@ -1,7 +1,7 @@
 {
     "name": "@gladeye/blueprint",
     "license": "MIT",
-    "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
+    "description": "WordPress project starter kit, based on the excellent Bedrock boilerplate and Sage theme",
     "config": {
         "port": {
             "wordpress": 5000,
