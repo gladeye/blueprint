@@ -4,7 +4,7 @@ const bs = require('browser-sync'),
     { options } = require('../utils.js');
 
 bs.init({
-    open: false,
+    open: true,
     ghostMode: false,
     port: argv.port,
     proxy: process.env.WPK_URL,
