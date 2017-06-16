@@ -55,6 +55,38 @@ Or, you can cut and paste from the [Roots WordPress Salt Generator][roots-wp-sal
 
 3. Run `yarn start` and build something awesome!
 
+## Theme structure
+
+```shell
+public/content/themes/sage/     # → Root of your Sage based theme
+├── app                         # → Theme PHP
+│   ├── admin.php               # → Theme customizer setup
+│   ├── filters.php             # → Theme filters
+│   ├── helpers.php             # → Helper functions
+│   └── setup.php               # → Theme setup
+└── resources                   # → Theme assets and templates
+    ├── assets                  # → Front-end assets
+    │   ├── options.json        # → Settings for compiled assets
+    │   ├── dist/               # → Built theme assets (never edit)
+    │   ├── fonts/              # → Theme fonts
+    │   ├── images/             # → Theme images
+    │   ├── media/              # → Theme others media (e.g svg, video)
+    │   ├── scripts/            # → Theme scripts
+    │   └── styles/             # → Theme styles
+    ├── functions.php           # → Theme bootstrap
+    ├── index.php               # → Never manually edit
+    ├── screenshot.png          # → Theme screenshot for WP admin
+    ├── style.css               # → Theme meta information
+    └── views                   # → Theme templates
+        ├── layouts/            # → Base layouts
+        └── partials/           # → Partial templates
+```
+
+
+## Theme setup
+
+Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
+
 
 [wp-cli]:http://wp-cli.org/
 [roots-wp-salt]:https://roots.io/salts.html
