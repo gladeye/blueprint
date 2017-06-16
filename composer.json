@@ -3,7 +3,6 @@
     "type": "project",
     "license": "MIT",
     "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
-    "homepage": "https://blueprint.gladeye.com/",
     "config": {
         "preferred-install": "dist"
     },
