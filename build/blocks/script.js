@@ -19,7 +19,7 @@ module.exports = config(function(instance, options) {
                                     "modules": false,
                                     "useBuiltIns": true
                                 }],
-                                "stage-0"
+                                "stage-2"
                             ]
                         }
                     }
