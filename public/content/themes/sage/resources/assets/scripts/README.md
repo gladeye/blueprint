@@ -58,14 +58,14 @@ app.on('class:has-contact-form', () => {
 
 - **`start`**: Will always trigger as soon as page has loaded, good place to execute any common required scripts across all pages.
 
-```js
-// scripts/modules/common.js
+    ```js
+        // scripts/modules/common.js
 
-import Application from "libs/Application";
+        import Application from "libs/Application";
 
-const app = Application.instance();
+        const app = Application.instance();
 
-app.on('start', () => {
-    // any script that should execute on any pages
-});
-```
+        app.on('start', () => {
+            // any script that should execute on any pages
+        });
+    ```
