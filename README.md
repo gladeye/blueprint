@@ -91,3 +91,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 [wp-cli]:http://wp-cli.org/
 [roots-wp-salt]:https://roots.io/salts.html
 [wp-cli-dotenv]:https://github.com/aaemnnosttv/wp-cli-dotenv-command
+
+## Additional docs
+
+- [Scripts]('./public/content/themes/sage/resouces/assets/scripts')
