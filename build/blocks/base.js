@@ -11,7 +11,7 @@ module.exports = config(function(instance, options, environemnt) {
 
         output: {
             path: `${options.paths.context}/dist`,
-            publicPath: options.publicPath,
+            publicPath: options.paths.publicPath,
             filename: `scripts/${environemnt.valueOf('filename').replace('hash', 'chunkhash')}.js`
         },
 

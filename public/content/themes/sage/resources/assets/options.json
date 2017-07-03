@@ -2,7 +2,6 @@
     "entry": {
         "main": "./scripts/main.js"
     },
-    "publicPath": "/content/themes/sage/resources/assets/dist/",
     "hash": "[name].[hash:8]",
     "watch": [
         "{app,resources/views}/**/*.php"

@@ -2,11 +2,12 @@ const { Config, environment } = require('webpack-config'),
     path = require('path'),
     theme = path.resolve(__dirname, '../public/content/themes/sage'),
     context = `${theme}/resources/assets`,
+    publicPath = '/content/themes/sage/resources/assets/dist/',
     options = require(`${context}/options.json`);
 
 // inject paths
 options.paths = {
-    context, theme
+    context, theme, publicPath
 };
 
 module.exports.config = function(fn) {
