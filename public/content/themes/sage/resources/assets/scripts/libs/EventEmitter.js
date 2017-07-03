@@ -5,8 +5,8 @@
  * @preserve
  */
 
-;(function (exports) {
-    'use strict';
+(function(exports) {
+    "use strict";
 
     /**
      * Class for managing events.
@@ -75,8 +75,7 @@
                     response[key] = events[key];
                 }
             }
-        }
-        else {
+        } else {
             response = events[evt] || (events[evt] = []);
         }
 
@@ -118,13 +117,13 @@
         return response || listeners;
     };
 
-    function isValidListener (listener) {
-        if (typeof listener === 'function' || listener instanceof RegExp) {
-            return true
-        } else if (listener && typeof listener === 'object') {
-            return isValidListener(listener.listener)
+    function isValidListener(listener) {
+        if (typeof listener === "function" || listener instanceof RegExp) {
+            return true;
+        } else if (listener && typeof listener === "object") {
+            return isValidListener(listener.listener);
         } else {
-            return false
+            return false;
         }
     }
 
@@ -140,19 +139,26 @@
      */
     proto.addListener = function addListener(evt, listener) {
         if (!isValidListener(listener)) {
-            throw new TypeError('listener must be a function');
+            throw new TypeError("listener must be a function");
         }
 
         var listeners = this.getListenersAsObject(evt);
-        var listenerIsWrapped = typeof listener === 'object';
+        var listenerIsWrapped = typeof listener === "object";
         var key;
 
         for (key in listeners) {
-            if (listeners.hasOwnProperty(key) && indexOfListener(listeners[key], listener) === -1) {
-                listeners[key].push(listenerIsWrapped ? listener : {
-                    listener: listener,
-                    once: false
-                });
+            if (
+                listeners.hasOwnProperty(key) &&
+                indexOfListener(listeners[key], listener) === -1
+            ) {
+                listeners[key].push(
+                    listenerIsWrapped
+                        ? listener
+                        : {
+                              listener: listener,
+                              once: false
+                          }
+                );
             }
         }
 
@@ -162,7 +168,7 @@
     /**
      * Alias of addListener
      */
-    proto.on = alias('addListener');
+    proto.on = alias("addListener");
 
     /**
      * Semi-alias of addListener. It will add a listener that will be
@@ -182,7 +188,7 @@
     /**
      * Alias of addOnceListener.
      */
-    proto.once = alias('addOnceListener');
+    proto.once = alias("addOnceListener");
 
     /**
      * Defines an event name. This is required if you want to use a regex to add a listener to multiple events at once. If you don't do this then how do you expect it to know what event to add to? Should it just add to every possible match for a regex? No. That is scary and bad.
@@ -238,7 +244,7 @@
     /**
      * Alias of removeListener
      */
-    proto.off = alias('removeListener');
+    proto.off = alias("removeListener");
 
     /**
      * Adds listeners in bulk using the manipulateListeners method.
@@ -282,28 +288,30 @@
      * @param {Function[]} [listeners] An optional array of listener functions to add/remove.
      * @return {Object} Current instance of EventEmitter for chaining.
      */
-    proto.manipulateListeners = function manipulateListeners(remove, evt, listeners) {
+    proto.manipulateListeners = function manipulateListeners(
+        remove,
+        evt,
+        listeners
+    ) {
         var i;
         var value;
         var single = remove ? this.removeListener : this.addListener;
         var multiple = remove ? this.removeListeners : this.addListeners;
 
         // If evt is an object then pass each of its properties to this method
-        if (typeof evt === 'object' && !(evt instanceof RegExp)) {
+        if (typeof evt === "object" && !(evt instanceof RegExp)) {
             for (i in evt) {
                 if (evt.hasOwnProperty(i) && (value = evt[i])) {
                     // Pass the single listener straight through to the singular method
-                    if (typeof value === 'function') {
+                    if (typeof value === "function") {
                         single.call(this, i, value);
-                    }
-                    else {
+                    } else {
                         // Otherwise pass back to the multiple function
                         multiple.call(this, i, value);
                     }
                 }
             }
-        }
-        else {
+        } else {
             // So evt must be a string
             // And listeners must be an array of listeners
             // Loop over it and pass each one to the multiple method
@@ -331,19 +339,17 @@
         var key;
 
         // Remove different things depending on the state of evt
-        if (type === 'string') {
+        if (type === "string") {
             // Remove all listeners for the specified event
             delete events[evt];
-        }
-        else if (evt instanceof RegExp) {
+        } else if (evt instanceof RegExp) {
             // Remove all events matching the regex.
             for (key in events) {
                 if (events.hasOwnProperty(key) && evt.test(key)) {
                     delete events[key];
                 }
             }
-        }
-        else {
+        } else {
             // Remove all listeners in all events
             delete this._events;
         }
@@ -356,7 +362,7 @@
      *
      * Added to mirror the node API.
      */
-    proto.removeAllListeners = alias('removeEvent');
+    proto.removeAllListeners = alias("removeEvent");
 
     /**
      * Emits an event of your choice.
@@ -406,7 +412,7 @@
     /**
      * Alias of emitEvent
      */
-    proto.trigger = alias('emitEvent');
+    proto.trigger = alias("emitEvent");
 
     /**
      * Subtly different from emitEvent in that it will pass its arguments on to the listeners, as opposed to taking a single array of arguments to pass on.
@@ -443,10 +449,9 @@
      * @api private
      */
     proto._getOnceReturnValue = function _getOnceReturnValue() {
-        if (this.hasOwnProperty('_onceReturnValue')) {
+        if (this.hasOwnProperty("_onceReturnValue")) {
             return this._onceReturnValue;
-        }
-        else {
+        } else {
             return true;
         }
     };
@@ -472,15 +477,13 @@
     };
 
     // Expose the class either via AMD, CommonJS or the global object
-    if (typeof define === 'function' && define.amd) {
-        define(function () {
+    if (typeof define === "function" && define.amd) {
+        define(function() {
             return EventEmitter;
         });
-    }
-    else if (typeof module === 'object' && module.exports){
+    } else if (typeof module === "object" && module.exports) {
         module.exports = EventEmitter;
-    }
-    else {
+    } else {
         exports.EventEmitter = EventEmitter;
     }
-}(this || {}));
+})(this || {});

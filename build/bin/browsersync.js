@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const bs = require('browser-sync'),
-    { argv } = require('yargs'),
-    { options } = require('../utils.js');
+const bs = require("browser-sync"),
+    { argv } = require("yargs"),
+    { options } = require("../utils.js");
 
 bs.init({
     open: true,
@@ -10,7 +10,7 @@ bs.init({
     proxy: process.env.WPK_URL,
     watchOptions: {
         ignoreInitial: true,
-        ignored: '*.txt',
+        ignored: "*.txt",
         cwd: options.paths.theme
     },
     files: options.watch
