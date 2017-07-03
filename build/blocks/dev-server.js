@@ -31,11 +31,8 @@ module.exports = config(function(instance) {
                     respMod({
                         rules: [
                             {
-                                match: new RegExp(
-                                    PHP_URL.replace("//", "//"),
-                                    "gi"
-                                ),
-                                replace: `http://localhost:${argv.port}`
+                                match: new RegExp(PHP_URL, "gi"),
+                                replace: `//localhost:${argv.port}`
                             }
                         ]
                     })
