@@ -30,7 +30,7 @@ WordPress project starter kit, based on the excellent [Bedrock](https://roots.io
 1. Create a new project in a new folder for your project:
 
     ```
-        composer create-project gladeye/blueprint your-project-folder-name
+        composer create-project "gladeye/blueprint:1.0.0-beta.1" your-project-folder-name
     ```
 
 2. Update environment variables in `.env`  file:
