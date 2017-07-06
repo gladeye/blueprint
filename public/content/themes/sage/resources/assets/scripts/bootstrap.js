@@ -1,5 +1,5 @@
-import Application from "libs/Application";
-import "modules/home";
+import Application from "~/libs/Application";
+import "~/modules/home";
 
 const app = Application.instance();
 

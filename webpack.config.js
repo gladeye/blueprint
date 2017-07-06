@@ -1,8 +1,7 @@
 const { config } = require("@gladeye/bento");
 
-module.exports = config(
-    {
-        /**
+module.exports = config({
+    /**
      * ------------------------------------------------------------------------
      * Paths
      * ------------------------------------------------------------------------
@@ -23,14 +22,14 @@ module.exports = config(
      * @see https://webpack.js.org/configuration/output/#output-publicpath
      *
      */
-        paths: {
-            root: process.cwd(),
-            input: "./public/content/themes/sage/resources/assets/",
-            output: "./public/content/themes/sage/resources/assets/dist/",
-            public: "/content/themes/sage/resources/assets/dist/"
-        },
+    "paths": {
+        "root": process.cwd(),
+        "input": "./public/content/themes/sage/resources/assets/",
+        "output": "./public/content/themes/sage/resources/assets/dist/",
+        "public": "/content/themes/sage/resources/assets/dist/"
+    },
 
-        /**
+    /**
      * ------------------------------------------------------------------------
      * Entry
      * ------------------------------------------------------------------------
@@ -40,14 +39,34 @@ module.exports = config(
      * @see https://webpack.js.org/configuration/entry-context/#context
      *
      */
-        entry: {
-            main: [
-                // "normalize.css/normalize.css"
-                "./scripts/main.js"
-            ]
-        },
+    "entry": {
+        "main": [
+            // "normalize.css/normalize.css"
+            "./scripts/main.js"
+        ]
+    },
 
-        /**
+    /**
+     * ------------------------------------------------------------------------
+     * Resolve
+     * ------------------------------------------------------------------------
+     * Webpack's `resolve` options can be defined here
+     *
+     * @see https://webpack.js.org/configuration/resolve/
+     *
+     * By default "~" is set to resolved to `scripts` folder, make it easier to
+     * import modules within there.
+     *
+     * @see https://webpack.js.org/configuration/resolve/#resolve-alias
+     *
+     */
+    "resolve": {
+        alias: {
+            "~": "@{paths.resolved.input}/scripts"
+        }
+    },
+
+    /**
      * ------------------------------------------------------------------------
      * Caching
      * ------------------------------------------------------------------------
@@ -56,22 +75,22 @@ module.exports = config(
      * @see https://webpack.js.org/guides/caching/#the-problem
      *
      */
-        caching: {
-            hash: ".[hash:8]"
-        },
+    "caching": {
+        "hash": ".[hash:8]",
+    },
 
-        /**
+    /**
      * ------------------------------------------------------------------------
      * Additional options
      * ------------------------------------------------------------------------
      * "sourceMap": Enable / disable source map
      *
      */
-        enabled: {
-            sourceMap: true
-        },
+    "enabled": {
+        "sourceMap": true
+    },
 
-        /**
+    /**
      * ------------------------------------------------------------------------
      * Browserslist
      * ------------------------------------------------------------------------
@@ -80,11 +99,13 @@ module.exports = config(
      * @see https://github.com/ai/browserslist#queries
      *
      */
-        browserslist: {
-            browsers: ["last 1 version"]
-        },
+    "browserslist": {
+        "browsers": [
+            "last 1 version"
+        ]
+    },
 
-        /**
+    /**
      * ------------------------------------------------------------------------
      * Babel
      * ------------------------------------------------------------------------
@@ -94,24 +115,24 @@ module.exports = config(
      * @see https://github.com/babel/babel-preset-env
      *
      */
-        babel: {
-            presets: [
-                [
-                    "env",
-                    {
-                        targets: {
-                            browsers: "@{browserslist.browsers}"
-                        },
-                        loose: true,
-                        modules: false,
-                        useBuiltIns: true
-                    }
-                ],
-                "stage-2"
-            ]
-        },
+    "babel": {
+        presets: [
+            [
+                "env",
+                {
+                    targets: {
+                        browsers: "@{browserslist.browsers}"
+                    },
+                    loose: true,
+                    modules: false,
+                    useBuiltIns: true
+                }
+            ],
+            "stage-2"
+        ]
+    },
 
-        /**
+    /**
      * ------------------------------------------------------------------------
      * Browsersync
      * ------------------------------------------------------------------------
@@ -121,18 +142,22 @@ module.exports = config(
      *
      * @see https://www.browsersync.io/docs/options#option-files
      */
-        browsersync: {
-            open: true,
-            ghostMode: false,
-            watchOptions: {
-                ignoreInitial: true,
-                ignored: "*.txt",
-                cwd: "@{paths.root}"
-            },
-            files: ["{public/content/themes/sage}/**/*.php"]
+    "browsersync": {
+        open: true,
+        ghostMode: false,
+        watchOptions: {
+            ignoreInitial: true,
+            ignored: "*.txt",
+            cwd: "@{paths.root}"
         },
+        files: [
 
-        /**
+            // "{app,resources/views}/**/*.php"
+
+        ]
+    },
+
+    /**
      * ------------------------------------------------------------------------
      * Files
      * ------------------------------------------------------------------------
@@ -140,11 +165,12 @@ module.exports = config(
      *              Note: glob path is relative to `paths.input`
      *
      */
-        files: {
-            copy: "+(images|media)/**/*"
-        },
+    "files": {
+        "copy": "+(images|media)/**/*"
+    },
 
-        /**
+
+    /**
      * ------------------------------------------------------------------------
      * Back-end Server
      * ------------------------------------------------------------------------
@@ -153,15 +179,18 @@ module.exports = config(
      *              supported.
      *
      */
-        server: {
-            proxy: {
-                "/": {
-                    target: "http://localhost:8080",
-                    changeOrigin: true,
-                    autoRewrite: true
-                }
+    "server": {
+        "proxy": {
+            "/": {
+                target: "http://localhost:8080",
+                changeOrigin: true,
+                autoRewrite: true
             }
         }
-    },
-    process.argv[1].indexOf("webpack-dev-server") >= 0
-);
+    }
+
+
+
+
+}, process.argv[1].indexOf('webpack-dev-server') >= 0);
+

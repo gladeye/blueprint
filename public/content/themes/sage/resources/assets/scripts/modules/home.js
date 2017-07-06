@@ -1,4 +1,4 @@
-import Application from "libs/Application";
+import Application from "~/libs/Application";
 
 const app = Application.instance();
 
