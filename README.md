@@ -99,3 +99,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Additional docs
 
 - [Scripts](public/content/themes/sage/resources/assets/scripts)
+
+## License
+
+MIT © [Gladeye](https://gladeye.com)
