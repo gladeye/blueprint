@@ -63,7 +63,11 @@ public/content/themes/sage/     # → Root of your Sage based theme
 │   ├── admin.php               # → Theme customizer setup
 │   ├── filters.php             # → Theme filters
 │   ├── helpers.php             # → Helper functions
-│   └── setup.php               # → Theme setup
+│   ├── post-types.php          # → Custom Post types register list
+│   ├── setup.php               # → Theme setup
+│   ├── taxonomies.php          # → Custom Taxonomies register list
+│   ├── post-types/             # → Custom Post Types definitions
+│   └── taxonomies/             # → Custom Taxonomies definitions
 └── resources                   # → Theme assets and templates
     ├── assets                  # → Front-end assets
     │   ├── options.json        # → Settings for compiled assets
