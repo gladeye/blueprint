@@ -16,7 +16,7 @@
         "node": ">= 7"
     },
     "devDependencies": {
-        "@gladeye/bento": ">=1.0.0-beta.0 <2.x",
+        "@gladeye/bento": "^1.0.0-rc.4",
         "npm-run-all": "^4.0.2"
     }
 }
